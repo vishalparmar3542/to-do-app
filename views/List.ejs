@@ -1,0 +1,37 @@
+<%-include('header')-%>
+   <div class="box" id="heading">
+    <h1>it's <%=kindOfDay%></h1>
+    <h1><%=type%></h1>
+</div>
+<div class="box">
+       <% for(var i=0;i<newListItems.length;i++){ %>
+        <div class="item">
+            <form action="/delete" method="post">
+            <input type="checkbox" name="checkbox" value="<%=newListItems[i].id%>"onChange="this.form.submit()"/>
+            <input type="hidden" name="Listname" value="<%=type%>"/>
+        </form>
+            <p ><%=newListItems[i].name%></p>
+            
+        </div>  
+       <% } %>    
+</div>
+    <form action="/" method="post" class=" box">
+        <input type="text" placeholder="Enter New task.."  name="newTask" required=""/>
+        <button type="submit" class="newitembutton" name="button" value="<%=type%>">+</button> 
+
+    </form>
+    <form action="/create" method="post" class=" box">
+        <input type="text" placeholder="create new list"  name="newTask" required=""/>
+        <button type="submit" class="newitembutton" name="button" value="">+</button> 
+        
+    </form >
+    
+    <form action="/" method="get"  style="text-align: center;">
+        
+        <button type="submit"  name="button" style="color: rgb(20, 20, 20);background-color: blueviolet;border: 0cm;text-align: center;" value="">HOME</button> 
+
+    </form>
+   
+
+    <%-include('footer')-%>
+
